@@ -3,7 +3,7 @@ import axios from 'axios'
 function App() {
   const [value, setValue] = useState('')
   const [data, setData] = useState({})
-  const APIKEY = '8d7a2b8b5628c8577c68d62dee92cb77'
+  const APIKEY =  import.meta.env.VITE_WEATHER_API_KEY;
   const url = `https://api.weatherstack.com/current?access_key=${APIKEY}&query=${value}`
   const searchfun = (event) => {
     if (event.key === 'Enter'){
@@ -35,8 +35,12 @@ function App() {
     case 'Clear':
         weather = 'sunny';
         break;
+    case 'Light Rain':
+    case 'Rain':
+        weather = 'rain';
+        break;
     default:
-        weather = 'none'
+        weather = 'none';
         break;
   }
 
